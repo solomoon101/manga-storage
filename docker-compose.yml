@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  nginx-storage:
+    build:
+      context: .
+      args:
+        # You can override build-time defaults here if needed
+        # DEFAULT_NGINX_PORT: 9181
+        # DEFAULT_SERVER_NAME: storage.ezmanga.org
+        # DEFAULT_ROOT_PATH: /data/storage
+    container_name: ezmanga_nginx_storage
+    ports:
+      # Map host port (from .env) to container port (from .env or Dockerfile default)
+      - "${HOST_PORT}:${NGINX_PORT}"
+    volumes:
+      # Mount host storage path (from .env) to container root path (from .env or Dockerfile default)
+      # Make sure the host directory exists or Docker will create it as root
+      - "${HOST_STORAGE_PATH}:${ROOT_PATH}"
+    environment:
+      # Pass environment variables to the container
+      # These will override the defaults set in the Dockerfile and be used by envsubst
+      NGINX_PORT: ${NGINX_PORT}
+      SERVER_NAME: ${SERVER_NAME}
+      ROOT_PATH: ${ROOT_PATH}
+    restart: unless-stopped
+    # Optional: Add network configuration if needed
+    # networks:
+    #   - my_network
+# Optional: Define networks
+# networks:
+#   my_network:
+#     driver: bridge
