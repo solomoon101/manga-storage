@@ -1,8 +1,8 @@
 # Use the official Nginx image as the base image
 FROM nginx:alpine
 
-# Install gettext for envsubst
-RUN apk update && apk add --no-cache gettext
+# Install gettext for envsubst and su-exec for user switching
+RUN apk update && apk add --no-cache gettext su-exec
 
 # Remove the default Nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf

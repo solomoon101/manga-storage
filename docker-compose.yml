@@ -18,5 +18,4 @@ services:
       - type: bind
         source: ${HOST_STORAGE_PATH:-./storage} # Use HOST_STORAGE_PATH from .env or default to ./storage
         target: ${ROOT_PATH}
-    user: nginx # Run as nginx user
     restart: unless-stopped
