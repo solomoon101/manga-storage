@@ -47,7 +47,8 @@ RUN echo '<!DOCTYPE html>\
 
 # Set proper permissions for the root directory
 # Ensure the nginx user owns the root path and logs
-RUN chown -R nginx:nginx ${ROOT_PATH} /var/log/nginx /tmp/nginx_cache && \
+RUN mkdir -p /tmp/nginx_cache && \
+    chown -R nginx:nginx ${ROOT_PATH} /var/log/nginx /tmp/nginx_cache && \
     chmod -R 755 ${ROOT_PATH}
 
 # Create a volume mount point for the root path
