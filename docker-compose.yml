@@ -11,7 +11,7 @@ services:
     volumes:
       # Mount host storage path (from .env) to container root path (from .env or Dockerfile default)
       # Make sure the host directory exists or Docker will create it as root
-      - "${HOST_STORAGE_PATH}:${ROOT_PATH}"
+      - "${ROOT_PATH}:${ROOT_PATH}"
     environment:
       # Pass environment variables to the container
       # These will override the defaults set in the Dockerfile and be used by envsubst
