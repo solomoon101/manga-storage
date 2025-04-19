@@ -14,11 +14,9 @@ services:
       NGINX_PORT: ${NGINX_PORT}
       SERVER_NAME: ${SERVER_NAME}
       ROOT_PATH: ${ROOT_PATH}
+    volumes:
+      - type: bind
+        source: ${HOST_STORAGE_PATH:-./storage} # Use HOST_STORAGE_PATH from .env or default to ./storage
+        target: ${ROOT_PATH}
+    user: nginx # Run as nginx user
     restart: unless-stopped
-    # Optional: Add network configuration if needed
-    # networks:
-    #   - my_network
-# Optional: Define networks
-# networks:
-#   my_network:
-#     driver: bridge
