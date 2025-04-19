@@ -4,11 +4,6 @@ services:
   nginx-storage:
     build:
       context: .
-      args:
-        # You can override build-time defaults here if needed
-        # DEFAULT_NGINX_PORT: 9181
-        # DEFAULT_SERVER_NAME: storage.ezmanga.org
-        # DEFAULT_ROOT_PATH: /data/storage
     container_name: ezmanga_nginx_storage
     ports:
       # Map host port (from .env) to container port (from .env or Dockerfile default)
