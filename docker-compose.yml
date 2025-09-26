@@ -20,5 +20,5 @@ services:
         target: ${ROOT_PATH}
       - type: bind
         source: ${HOST_STORAGE_PATH:-./minio-data}
-        target: ${ROOT_PATH}/minio-data
+        target: ${ROOT_PATH}
     restart: unless-stopped
