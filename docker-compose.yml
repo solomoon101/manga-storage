@@ -18,4 +18,7 @@ services:
       - type: bind
         source: ${HOST_STORAGE_PATH:-./storage} # Use HOST_STORAGE_PATH from .env or default to ./storage
         target: ${ROOT_PATH}
+      - type: bind
+        source: ${HOST_STORAGE_PATH:-./minio-data}
+        target: ${ROOT_PATH}/minio-data
     restart: unless-stopped
